@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Assessment.Models;
 
+
 namespace Assessment.Controllers
 {
     public class PersonController : ApiController
@@ -19,7 +20,22 @@ namespace Assessment.Controllers
         // GET: api/Person
         public IQueryable<Person> GetPersons()
         {
-            return db.Persons;
+            try
+            {
+                var response =  db.Persons;
+                // return enumerable.Where(e => e != null).Select(e => e!);
+                return response;
+            }
+            catch (Exception ex) 
+            {
+
+                Console.WriteLine(ex.Message);
+            
+            
+            }
+
+
+            return null;
         }
 
         // GET: api/Person/5
